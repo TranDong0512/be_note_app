@@ -22,28 +22,31 @@ export const register = async (
     let userFind = await User.findOne({ email });
 
     if (userFind) {
-      return setError(res, "Email đã tồn tại", 400);
+      return res.status(400).json("lỗi");
     } else {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
 
       // Tính toán userId tự động tăng
-      const userId = await getNextCountId(User);
+      const countUserId = await getNextCountId(User, "userId");
       const user = new User({
         email,
         password: hashedPassword,
         userName,
-        userId,
+        userId: countUserId,
       });
       await user.save();
       const userResponse = {
         email,
         userName,
       };
-      return success(res, "Đăng ký thành công", userResponse);
+      return success(res, "Đăng ký thành công", {
+        userName: userResponse.userName,
+        email: userResponse.email,
+      });
     }
   } catch (error) {
-    return setError(error, "Đã có lỗi xảy ra");
+    return res.status(400).json(error);
   }
 };
 

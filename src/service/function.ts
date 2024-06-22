@@ -1,5 +1,4 @@
 import fs from "fs";
-import { Request, Response } from "express";
 import path from "path";
 import { promisify } from "util";
 import bcrypt from "bcrypt";
@@ -13,17 +12,16 @@ const MbSize = 1024 * 1024;
 const MAX_IMG_SIZE = 2 * MbSize;
 
 export const setError = (
-  res: Response,
+  res: any,
   message: string,
   code: number = 500
-): Response => {
+): any => {
   return res.status(code).json({ data: null, code, error: message });
 };
 
-export const success = (res: any, message: string, data: any = null): any => {
+export const success = (res: any, message: string, data = null): any => {
   return res.status(200).json({ message, data });
 };
-
 export const getMaxID = async (model) => {
   const maxUser =
     (await model.findOne({}, {}, { sort: { _id: -1 } }).lean()) || 0;
@@ -83,10 +81,21 @@ export const findCount = async (model, filter) => {
   }
 };
 
-export const getNextCountId = async (model) => {
-  const latestFolder = await model.findOne().sort({ idFolder: -1 }).exec();
-  const latestId = latestFolder ? parseInt(latestFolder.idFolder) : 0;
-  return latestId + 1;
+export const getNextCountId = async (model, id) => {
+  try {
+    const latestFolder = await model.findOne().sort({ id: -1 }).exec();
+    if (!latestFolder) {
+      return 1;
+    }
+    const latestId = parseInt(latestFolder.id);
+    if (isNaN(latestId)) {
+      return "Invalid idFolder value";
+    }
+    return latestId + 1;
+  } catch (error) {
+    console.error("Error in getNextCountId:", error);
+    throw error;
+  }
 };
 
 export const getNextNoteId = async () => {

@@ -20,7 +20,7 @@ export const addFolder = async (req: Request, res: Response) => {
     if (existingFolder) {
       return setError(res, "Folder with this name already exists", 400);
     }
-    const idFolder = await getNextCountId(FolderModel);
+    const idFolder = await getNextCountId(FolderModel, "idFolder");
 
     const newFolder = new FolderModel({
       name: trimmedName,
