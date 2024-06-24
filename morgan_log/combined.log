@@ -1,0 +1,10 @@
+2024-06-24T16:42:23.798Z info: Email: anonymous - Method: GET - URL: /folder - Status: 401 - Response Time: 9.533 ms
+2024-06-24T16:50:42.137Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 268.268 ms
+2024-06-24T17:23:23.243Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 93.379 ms
+2024-06-24T17:23:55.861Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 71.566 ms
+2024-06-24T17:24:59.135Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 53.061 ms
+2024-06-24T17:25:31.333Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 51.978 ms
+2024-06-24T17:27:51.603Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 70.874 ms
+2024-06-24T17:28:51.223Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 54.138 ms
+2024-06-24T17:31:17.847Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 52.622 ms
+2024-06-24T17:32:33.543Z info: Email: tdong05121@gmail.com - Method: POST - URL: /users/login - Status: 200 - Response Time: 53.171 ms
